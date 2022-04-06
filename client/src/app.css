@@ -2,10 +2,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.app {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+html, body {
+    height: 100%;
+}
+
+.parent {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.bg {
     background: linear-gradient(
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.3)
@@ -18,12 +27,24 @@
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 25px 0px 25px 0px
   }
   
-  form{
-      background-color: white;
-      padding: 0px 25px;
-      border-radius: 10px;
+form{
+    background-color: white;
+    padding: 0px 25px;
+    border-radius: 10px;
+    margin: 25px 0px 25px 0px;
+    margin-bottom: auto;
+    margin-top: auto;
   }
   
   h1{
@@ -52,4 +73,5 @@
 
   .imgResult {
     max-width: 280px !important;
+    max-height: 280px !important;
   }

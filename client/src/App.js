@@ -4,16 +4,20 @@ import './app.css';
 
 function App() {
   //set states for the file resizer
-  let [fileToUpload, setFileToUpload] = useState(null);
+  let [fileToUpload, setFileToUpload] = useState('');
   let [img64, setImg64] = useState('');
+
+  //console.log('rendering App');
 
   // Image Preview Handler
   function handleFileChange(e) {
+    //console.log('handleFileChange');
     //set state to the file reference from the input element 
     setFileToUpload(e.target.files[0]);
   }
 
   async function handleFileUpload() {
+    //console.log('handleFileUpload');
     let formData = new FormData();
 
     //key name of the input element is "myimage"
@@ -39,8 +43,8 @@ function App() {
     })
     .catch(function (err) {
       console.log(err);
-      setFileToUpload(null);
-      setValues({...values, imageFile: undefined});
+      setFileToUpload('');
+      setValues({...values, imageFile: ''});
     });
   }
 
@@ -50,7 +54,7 @@ function App() {
     quality: 80,
     width: 100,
     height: 100,
-    imageFile: undefined,
+    imageFile: '',
   });
 
   const inputs = [
@@ -122,13 +126,15 @@ function App() {
 
   //TODO: fix the function to handle the size upload
   function handleSizeUpload(e) {  
+    //console.log('handleSizeUpload');
     if (e.target.value < 10 || e.target.value > 1000) {
       e.target.value = 10;
     }
   }
 
   return (
-    <div>
+    <div className='parent'>
+      <div className="bg"></div>
 
       <div className="app">
         <form onSubmit={handleSubmit}>
@@ -157,21 +163,6 @@ function App() {
           }
         </form>
       </div>
-
-
-      
-
-      {/* <div>
-        <h2>Image resizer</h2>
-        <input type="file" name="myfile" onChange={handleFileChange} />
-        <br/>
-        <br/>
-        <button onClick={handleFileUpload}>Upload</button>  
-        <br/>
-        <br/>
-
-        {img64 !== '' ? <div className='text-center'><img src={img64} className='p-1 bg-white border rounded max-w-sm mx-auto' alt="img result of run" /></div> : null}
-      </div> */}
     </div>
   );
 }
